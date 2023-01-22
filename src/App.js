@@ -1,20 +1,18 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div>
-      <h1>My Hacker Stories</h1>
+const App = () => (
+  <div>
+    <h1>My Hacker Stories</h1>
 
-      <label htmlFor='search'>Search: </label>
-      <input id='search' type='text'></input>
+    <label htmlFor='search'>Search: </label>
+    <input id='search' type='text'></input>
 
-      <hr />
+    <hr />
 
-      <List />
+    <List />
 
-    </div>
-  );
-}
+  </div>
+);
 
 const list = [
   {
@@ -35,19 +33,16 @@ const list = [
   },
 ];
 
-function List() {
-  return (list.map(function(item) {
-      return (
-        <div key={item.objectID}>
-          <span>
-            <a href={item.url}>{item.title}</a>
-          </span>
-          <span>{item.author}</span>
-          <span>{item.num_comments}</span>
-          <span>{item.points}</span>
-        </div>
-      );
-    }));      
-}
+const List = () =>
+  list.map(item => (
+    <div key={item.objectID}>
+      <span>
+        <a href={item.url}>{item.title}</a>
+      </span>
+      <span>{item.author}</span>
+      <span>{item.num_comments}</span>
+      <span>{item.points}</span>
+    </div>
+    ));
 
 export default App;
