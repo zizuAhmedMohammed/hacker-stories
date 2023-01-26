@@ -43,18 +43,15 @@ const App = () => {
   );
 };
 
-const Search = props => { 
-  const { search, onSearch } = props;  
-  return (
+const Search = ({ search, onSearch }) => (   
   <div>
     <label htmlFor='search'>Search: </label>
     <input id='search' type='text' value= {search} onChange={onSearch}/>
   </div>
   );
-};
  
-const List = props =>
-  props.list.map(item => (
+const List = ({list}) =>
+  list.map(item => (
     <div key={item.objectID}>
       <span>
         <a href={item.url}>{item.title}</a>
