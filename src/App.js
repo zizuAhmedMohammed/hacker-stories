@@ -23,10 +23,13 @@ const App = () => {
     localStorage.getItem('search') || 'Redux'
   );
 
+  React.useEffect(() => {
+    localStorage.setItem('search', searchTerm);
+  }, [searchTerm]);
+
   const handleSearch = event => {
     setSearchTerm(event.target.value);
-
-    localStorage.setItem('search', event.target.value);
+    console.log(searchTerm)
   };
 
   const searchedStories = stories.filter( story => 
