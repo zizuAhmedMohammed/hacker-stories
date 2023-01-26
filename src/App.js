@@ -19,7 +19,7 @@ const App = () => {
       objectID: 1,
     },
   ];
-  const [searchTerm, setSearchTerm] = React.useState('')
+  const [searchTerm, setSearchTerm] = React.useState('Redux')
 
   const handleSearch = event => {
     setSearchTerm(event.target.value);
@@ -33,7 +33,7 @@ const App = () => {
     <div>
     <h1>My Hacker Stories</h1>
 
-    <Search onSearch={handleSearch}/>
+    <Search search={searchTerm} onSearch={handleSearch} />
     {/* <p>Search Keyword: <strong>{searchTerm}</strong></p> */}
 
     <hr />
@@ -44,11 +44,11 @@ const App = () => {
 };
 
 const Search = props => { 
-  const {onSearch} = props;  
+  const { search, onSearch } = props;  
   return (
   <div>
     <label htmlFor='search'>Search: </label>
-    <input id='search' type='text' onChange={onSearch}/>
+    <input id='search' type='text' value= {search} onChange={onSearch}/>
   </div>
   );
 };
