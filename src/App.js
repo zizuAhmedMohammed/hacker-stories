@@ -19,10 +19,14 @@ const App = () => {
       objectID: 1,
     },
   ];
-  const [searchTerm, setSearchTerm] = React.useState('Redux')
+  const [searchTerm, setSearchTerm] = React.useState(
+    localStorage.getItem('search') || 'Redux'
+  );
 
   const handleSearch = event => {
     setSearchTerm(event.target.value);
+
+    localStorage.setItem('search', event.target.value);
   };
 
   const searchedStories = stories.filter( story => 
