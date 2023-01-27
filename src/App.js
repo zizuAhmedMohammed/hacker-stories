@@ -1,15 +1,15 @@
 import React from 'react';
 
 const useSemiPersistentState = () => {
-  const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || ''
+  const [value, setValue] = React.useState(
+    localStorage.getItem('value') || ''
   );
 
   React.useEffect(() => {
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+    localStorage.setItem('value', value);
+  }, [value]);
 
-  return [searchTerm, setSearchTerm];
+  return [value, setValue];
 };
 
 const App = () => {
@@ -32,7 +32,9 @@ const App = () => {
     },
   ];
 
-  const [searchTerm, setSearchTerm] = useSemiPersistentState();
+  const [searchTerm, setSearchTerm] = useSemiPersistentState(
+    'search'
+  );
 
   const handleSearch = event => {
     setSearchTerm(event.target.value);
