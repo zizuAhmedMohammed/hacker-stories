@@ -60,12 +60,12 @@ const App = () => {
   );
 };
 
-const Search = ({ search, onSearch }) => (   
-  <div>
+const Search = ({ search, onSearch }) => (
+  <>  
     <label htmlFor='search'>Search: </label>
     <input id='search' type='text' value={search} onChange={onSearch}/>
-  </div>
-  );
+  </>
+);
  
 const List = ({list}) =>
   list.map(item => (
