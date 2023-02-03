@@ -40,7 +40,7 @@ const App = () => {
 
   const handleSearch = event => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm)
+    console.log(searchTerm);
   };
 
   const searchedStories = stories.filter( story => 
@@ -53,7 +53,6 @@ const App = () => {
 
       <InputWithLabel 
         id="search" 
-        // label="Search" 
         value={searchTerm}
         isFocused
         onInputChange={handleSearch} 
@@ -77,20 +76,29 @@ const InputWithLabel = ({
   onInputChange,
   isFocused,
   children,
-}) => (
-  <>
-    <label htmlFor={id}>{children}</label>
-    &nbsp;
-    <input
-      id={id}
-      type={type}
-      value={value}
-      autoFocus={isFocused}
-      onChange={onInputChange}
-    />
-  </>
-);
+}) => {
+  const inputRef = React.useRef();
 
+  React.useEffect(() => {
+    if (isFocused && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isFocused]);
+
+  return (
+    <>
+      <label htmlFor={id}>{children}</label>
+      &nbsp;
+      <input
+        ref={inputRef}
+        id={id}
+        type={type}
+        value={value}
+        onChange={onInputChange}
+      />
+    </>
+  );
+}
 // const Search = ({ search, onSearch }) => (
 //   <>  
 //     <label htmlFor='search'>Search: </label>
